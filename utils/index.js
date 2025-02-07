@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 function customLog(...message) {
     fs.appendFile('output.txt', JSON.stringify(message) + '\n', (err) => {
         if (err) {
