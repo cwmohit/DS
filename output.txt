@@ -1,9 +1,3 @@
 
-["Sorted array:",[50,52,53,54,55]]
-["Sorted array:",[50,52,53,54,55]]
-[null]
-[null]
-[null]
-[null]
-[null]
 [29]
+[10]

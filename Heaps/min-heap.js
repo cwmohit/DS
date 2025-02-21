@@ -8,6 +8,10 @@ class MinHeap {
       this.heapifyUp();
   }
 
+  top() {
+    return this.heap.length > 0 ? this.heap[0] : null;
+  }
+
   pop() {
       if (this.heap.length === 1) return this.heap.pop();
       const min = this.heap[0];
@@ -18,6 +22,10 @@ class MinHeap {
 
   size() {
       return this.heap.length;
+  }
+
+  isEmpty() {
+    return this.heap.length === 0;
   }
 
   heapifyUp() {
