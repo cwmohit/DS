@@ -33,8 +33,29 @@ var isPowerOfTwo = function(n) {
 };
 
 
+// Approach 2
+var isPowerOfTwo = function(n) {
+    if (n <= 0) return false;
+    while (n % 2 === 0) {
+        n = n / 2;
+    }
+    return n === 1;
+};
 
 
+// Approach 3
+let INT_MAX = (2 ** 31 - 1);
+var isPowerOfTwo = function(n) {
+    let ans = 1;
+    for (let i = 0; i <= 30; i++) {
+        if(ans === n){
+            return true;
+        }
+
+        if(ans < INT_MAX/2) ans = ans * 2;
+    }
+    return false;
+};  
 
 
 

@@ -31,6 +31,7 @@ Constraints:
 Follow up: If this function is called many times, how would you optimize it?
 */
 
+// Approach 1
 function hammingWeight(n) {
     let count = 0;
     while (n) {
@@ -39,6 +40,17 @@ function hammingWeight(n) {
     }
     return count;
 }
+
+
+// Approach 2 (best)
+var hammingWeight = function (n) {
+    let count = 0;
+    while (n) {
+        n = n & (n - 1);
+        count++;
+    }
+    return count;
+};
 
 
 

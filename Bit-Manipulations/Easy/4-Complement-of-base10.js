@@ -46,8 +46,24 @@ var bitwiseComplement = function(n) {
     return result;
 };
 
+// Approach 2
+function bitwiseComplement(n) {
+    if (n === 0) return 1;
 
+    let mask = 0, m = n;
 
+    while (m > 0) {
+        mask = (mask << 1) | 1;
+        m = m >> 1;
+    }
+
+    return n ^ mask;
+}
+/*
+     5: 101
+  mask: 111
+  5^111: 010
+*/
 
 
 

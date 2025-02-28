@@ -20,22 +20,25 @@ Constraints:
 */
 
 function decimalToBase2(n) {
-    let result = [];
+    let ans = '';
 
     while(n > 0){
         let bit = n&1;
-        result.push(bit);
+        ans = bit + ans;
         n = n >> 1;
     }
 
-    return result.reverse().join('');
+    return ans || '0';
 }
 
 
 
-
-
-
+// Approach 2
+function decimalToBase2(n) {
+    if (n === 0) return "0";
+    if (n === 1) return "1";
+    return decimalToBase2(Math.floor(n / 2)) + (n % 2);
+}
 
 
 
