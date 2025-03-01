@@ -29,6 +29,18 @@ function swap(a, b) {
 }
 
 
+/*
+ Explainations:
+ A ^ A = 0   (Any number XOR itself is 0)
+ A ^ 0 = A   (Any number XOR 0 remains unchanged)
+ A ^ B ^ A = B   (XOR is reversible, so A cancels out)
+
+ a = a ^ b;
+
+ b = a ^ b  -> (a^b)^b = a;
+ a = a ^ b  -> (a^b)^a = b;
+
+*/
 
 
 

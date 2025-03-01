@@ -39,6 +39,36 @@ var findComplement = function(num) {
 };
 
 
+// Approach 2
+var findComplement = function(num) {
+    let bitmask = (1 << num.toString(2).length) - 1;
+    return num ^ bitmask;
+};
+
+/*
+
+How This Works
+Example: num = 5
+
+5 in binary: 101
+
+num.toString(2).length = 3 (because 101 has 3 bits)
+
+Bitmask Calculation
+(1 << 3) - 1
+1000 - 1 = 111 (which is 7 in decimal)
+
+XOR Operation
+101 (5) ^ 111 (7) = 010 (2)
+Result → 2 ✅
+*/
+
+/*
+    101
+    111
+    010
+
+*/
 
 
 

@@ -54,11 +54,35 @@ function powBitwise(x, n) {
 }
 
 
+// Approach 2
+function myPow(x, n) {
+    if (n === 0) return 1;
+    if (n === 1) return x;
+
+    if (n < 0) {
+        x = 1 / x;
+        n = -n;
+    }
+
+    let ans = myPow(x, Math.floor(n / 2));
+    
+    return n % 2 === 0 ? ans * ans : ans * ans * x;
+    // explain
+    // 2 cases only for x^n  (^ is power sign)
+    // 1. n is even : x^n = x^(n/2) * x^(n/2)
+    // 2. n is odd : x^n = x * (x^(n/2) * x^(n/2))
+}
 
 
 
 
 
+
+
+/*
+  1010
+
+*/
 
 
 
