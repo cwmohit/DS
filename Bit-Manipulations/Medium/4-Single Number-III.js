@@ -37,7 +37,7 @@ function twoOddNum(Arr, N) {
         xorAll ^= Arr[i];
     }
 
-    // Step 2: Find the rightmost set bit in xorAll
+    // Step 2: Find the rightmost set bit in xorAll (coz two odd number left in xorAll and checking rightmost set bit that will to saperate out groups)
     let rightmostSetBit = xorAll & -xorAll;
 
     // Step 3: Separate numbers into two groups based on the rightmost set bit
