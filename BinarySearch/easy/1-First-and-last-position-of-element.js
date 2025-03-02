@@ -52,6 +52,10 @@ function search(nums, target) {
 }
 
 
+/*
+ Similar questions: Find total number of occurances
+*/
+
 
 
 

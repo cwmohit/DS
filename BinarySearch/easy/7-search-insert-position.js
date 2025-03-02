@@ -20,24 +20,22 @@ Result: 1
 Explanation: 2 is present in the array and so we will return its index i.e. 1.
 */
 
-function search(nums, target) {
-  let left = 0;
-  let right = nums.length - 1;
+function searchInsertPosition(nums, target) {
+  let left = 0, right = nums.length - 1, ans = nums.length;
+
   while (left <= right) {
-    let mid = Math.floor((left + right) / 2);
-    if (nums[mid] === target) {
-      return mid;
-    } else if (nums[mid] < target) {
-      left = mid + 1;
+    const mid = Math.floor((left + right) / 2);
+
+    if (nums[mid] >= target) {
+      ans = mid; 
+      right = mid - 1; // Search left for lower bound
     } else {
-      right = mid - 1;
+      left = mid + 1; // Search right
     }
   }
-  return left;
+
+  return ans;
 }
-
-
-
 
 
 
@@ -64,7 +62,7 @@ fs.readFile('input.txt', 'utf8', (err, data) => {
     const target = parseInt(input[1].split('=')[1].trim());
 
     // Call your function with the input data
-    const result = search(nums, target);
+    const result = searchInsertPosition(nums, target);
 
     // Append the result to output.txt instead of overwriting
     fs.appendFile('output.txt', JSON.stringify(result) + '\n', (err) => {

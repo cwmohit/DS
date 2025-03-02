@@ -33,16 +33,16 @@ function isPossible(nums, k, mid) {
     let students = 1;
     let sum = 0;
     for (let i = 0; i < nums.length; i++) {
-        if(sum + nums[i] > mid) {
+        if(sum + nums[i] <= mid) {
+            sum += nums[i];
+        }else {
             students++;
-            sum = nums[i];
             // If students required are more than given k, return false
             // If the number of pages in a book is more than mid, return false
             if (students > k || nums[i] > mid) {
                 return false;
             }
-        } else {
-            sum += nums[i];
+            sum = nums[i];
         }
     }
     return true;
@@ -65,6 +65,11 @@ function findPages(nums, k) {
     return ans;
 }
 
+
+/*
+Similar Question: Painters partition problem (to get minimum time to print board)
+
+*/
 
 
 

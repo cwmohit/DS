@@ -37,10 +37,10 @@ function isPossible(nums, mid, k) {
     for (let i = 1; i < nums.length; i++) {
         if (nums[i] - prev >= mid) {
             cows++;
-            prev = nums[i];
             if (cows === k) {
                 return true;
             }
+            prev = nums[i];
         }
     }
     return false;
@@ -64,8 +64,11 @@ function aggressiveCows(nums, k) {
 }
 
 
-
-
+/*
+Homework:
+EKO SPOJ: https://www.spoj.com/problems/EKO/  
+PRATA SPOJ: https://bit.ly/3ExHXt5  
+*/
 
 
 
