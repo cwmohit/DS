@@ -68,6 +68,51 @@ function findPages(nums, k) {
 
 /*
 Similar Question: Painters partition problem (to get minimum time to print board)
+Problem Statement
+There are n boards, each with some length.
+k painters are available, and each painter takes 1 unit of time per unit of board length.
+A painter can only paint contiguous boards.
+We need to partition the boards among k painters such that the maximum time required by any painter is minimized.
+
+function isPossible(boards, k, maxTime) {
+    let painters = 1;
+    let currentSum = 0;
+
+    for (let board of boards) {
+        if (currentSum + board > maxTime) {
+            painters++;
+            currentSum = board;
+            if (painters > k) return false;
+        } else {
+            currentSum += board;
+        }
+    }
+
+    return true;
+}
+
+function paintersPartition(boards, k) {
+    let low = Math.max(...boards); // Lower bound
+    let high = boards.reduce((sum, board) => sum + board, 0); // Upper bound
+    let result = high;
+
+    while (low <= high) {
+        let mid = Math.floor((low + high) / 2);
+        if (isPossible(boards, k, mid)) {
+            result = mid;
+            high = mid - 1; // Try to minimize
+        } else {
+            low = mid + 1; // Increase limit
+        }
+    }
+
+    return result;
+}
+
+// Example Usage:
+let boards = [10, 20, 30, 40]; // Board lengths
+let k = 2; // Number of painters
+console.log(paintersPartition(boards, k)); // Output: 60
 
 */
 
