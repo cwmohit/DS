@@ -43,7 +43,7 @@ var countAndSay = function(n) {
             count++;
             i++;
         }
-        result= result + `${count}`+ch;
+        result = result + `${count}`+ch;
     }
 
     return result;

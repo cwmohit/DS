@@ -17,8 +17,38 @@ Explanation: "catsdogcats" can be concatenated by "cats", "dog" and "cats";
 Example 2:
 Input: words = ["cat","dog","catdog"]
 Output: ["catdog"]
+
+
+Time complexity: O(n * (l*l*l))
 */
 
+// Approach 1
+var findAllConcatenatedWordsInADict = function(words) {
+    let result = [];
+    let wordSet = new Set(words);
+
+    function isConcatenated(word) {
+        for (let i = 1; i < word.length; i++) {
+            let prefix = word.substring(0, i);
+            let suffix = word.substring(i);
+
+            if (wordSet.has(prefix) && (wordSet.has(suffix) || isConcatenated(suffix))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    for (let word of words) {
+        wordSet.delete(word);
+        if (isConcatenated(word)) result.push(word);
+        wordSet.add(word);
+    }
+
+    return result;
+};
+
+// Better Approach (memorisation)
 var findAllConcatenatedWordsInADict = function(words) {
     let result = [];
     let wordSet = new Set(words); 

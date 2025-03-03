@@ -6,6 +6,7 @@ const fs = require('fs');
 https://leetcode.com/problems/integer-to-roman/description/
 */
 
+// Approach 1
 var intToRoman = function(num) {
     // we have the values and symbols in our question
     let values = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
@@ -14,7 +15,7 @@ var intToRoman = function(num) {
 
     for(let i=0;i<values.length;i++){
         if(num === 0) break;
-        times = Math.floor(num/values[i]);
+        let times = Math.floor(num/values[i]);
         while(times--){
             result+=sym[i];
         }
@@ -25,6 +26,21 @@ var intToRoman = function(num) {
     return result;
 };
 
+// Approach 2
+var intToRoman = function(num) {
+    let values = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+    let sym = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
+    let result = [];
+
+    for (let i = 0; i < values.length; i++) {
+        while (num >= values[i]) {
+            result.push(sym[i]);
+            num -= values[i];
+        }
+    }
+
+    return result.join('');
+};
 
 
 

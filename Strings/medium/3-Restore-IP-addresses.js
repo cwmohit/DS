@@ -40,7 +40,7 @@ var restoreIpAddresses = function(s) {
 
     function solve(idx, parts, current) {
         if (idx === n && parts === 4) {
-            result.push(current.slice(0, -1));
+            result.push(current.slice(0, -1)); // remove last dot
             return;
         }
 
@@ -59,6 +59,41 @@ var restoreIpAddresses = function(s) {
     solve(0, 0, ""); 
     return result; 
 };
+
+
+
+// Approach 2 (readable much)
+var restoreIpAddresses = function(s) {
+    let n = s.length;
+    if (n > 12) return []; 
+
+    let result = [];
+
+    function isValid(str) {
+        return str.length === 1 || (str[0] !== '0' && +str <= 255);
+    }
+
+    function backtrack(idx, parts) {
+        if (idx === n && parts.length === 4) {
+            result.push(parts.join('.'));
+            return;
+        }
+
+        if (parts.length >= 4) return;
+
+        for (let len = 1; len <= 3; len++) {
+            if (idx + len > n) break;
+            let part = s.substring(idx, idx + len);
+            if (isValid(part)) {
+                backtrack(idx + len, [...parts, part]);
+            }
+        }
+    }
+
+    backtrack(0, []); 
+    return result;
+};
+
 
 
 
