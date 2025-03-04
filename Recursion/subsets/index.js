@@ -24,6 +24,7 @@ Constraints:
 All the numbers of nums are unique.
 */
 
+// TC: Recursive call without including the character at index: O(2^(n))
 
 function subsets(nums) {
     var res = [];
@@ -48,7 +49,23 @@ function subsets(nums) {
 
 
 
-
+// Approach 2, TC: (2^(n))
+function subsets(nums) {
+    let result = [];
+    let n = nums.length;
+    
+    for (let i = 0; i < (1 << n); i++) { // Iterate from 0 to 2^n - 1
+        let subset = [];
+        for (let j = 0; j < n; j++) {
+            if (i & (1 << j)) { // Check if the j-th bit is set
+                subset.push(nums[j]);
+            }
+        }
+        result.push(subset);
+    }
+    
+    return result;
+}
 
 
 

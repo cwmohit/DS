@@ -56,6 +56,7 @@ function letterCombinations(s) {
   return res;
 }
 
+// TC: O(4^n) in the worst case.
 /*
   explain:
     digits = "23"

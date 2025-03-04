@@ -32,6 +32,11 @@ function mergeAndCountInversions(left, right) {
       } else {
         merged.push(right[j]);
         j++;
+
+        /*
+           It means all the elements from the right side of left[i] in left (>left[i]) are greater right[j] 
+           and it can pair
+        */
         inversions += left.length - i;
       }
     }

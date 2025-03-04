@@ -16,8 +16,28 @@ function ReverseString(n) {
 
 
 
+// Approach 2 (best)
+function ReverseString(str, i = 0, j = str.length - 1) {
+    if (i >= j) return str;
+    
+    const arr = str.split('');
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+    
+    return ReverseString(arr.join(''), i + 1, j - 1);
+}
 
+// Approach 3 (using single pointer)
+function ReverseString(str, i = 0) {
+    const j = str.length - 1 - i;
+    if (i >= j) return str;
+    
+    const arr = str.split('');
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+    
+    return ReverseString(arr.join(''), i + 1);
+}
 
+console.log(ReverseString("hello")); // Output: "olleh"
 
 
 

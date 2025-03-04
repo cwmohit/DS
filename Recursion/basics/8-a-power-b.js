@@ -25,8 +25,9 @@ n is an integer.
 Either x is not zero or n > 0.
 -104 <= xn <= 104
 */
-
-function myPow(x, n) {
+ 
+// Time: O(log n) (best)
+function myPow(x, n) { 
     if (n === 0) return 1;
     if (n === 1) return x;
 
@@ -45,10 +46,35 @@ function myPow(x, n) {
 }
 
 
+// Approach 2 (O(n))
+function myPow(x, n) {
+    let ans = 1;
+    for (let i = 0; i < Math.abs(n); i++) {
+        ans *= x;
+    }
+    return n < 0 ? 1 / ans : ans;
+}
 
 
 
+// Approach 3 (best one: O(log n) and SP: 1)
+var myPow = function(x, n) {
+    if (n === 0) return 1; 
 
+    let result = 1;
+    let power = n < 0 ? 1 / x : x; 
+    n = Math.abs(n);
+
+    while (n > 0) {
+        if (n % 2 === 1) {
+            result *= power;
+        }
+        power *= power; 
+        n = Math.floor(n / 2);
+    }
+
+    return result;
+};
 
 
 
