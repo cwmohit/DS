@@ -29,8 +29,6 @@ var subsetsWithDup = function(nums) {
             return;
         }
 
-        helper(nums, output, index + 1);
-
         output.push(nums[index]);
         helper(nums, output, index + 1);
         output.pop();
@@ -38,6 +36,8 @@ var subsetsWithDup = function(nums) {
         while (index + 1 < nums.length && nums[index] === nums[index + 1]) {
             index++;
         }
+
+        helper(nums, output, index + 1);
     }
 
     helper(nums, [], 0);
