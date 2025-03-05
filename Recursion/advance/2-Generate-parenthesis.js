@@ -40,6 +40,31 @@ function generateParenthesis(n) {
 }
 
 
+
+// Alternative approach
+function generateParenthesis(n) {
+  const result = [];
+  const backtrack = (open, close, arr) => {
+    if (arr.length === 2 * n) {
+      result.push(arr.join("")); // Convert array to string and store
+      return;
+    }
+    if (open < n) {
+      arr.push("(");
+      backtrack(open + 1, close, arr);
+      arr.pop(); // Backtrack
+    }
+    if (close < open) {
+      arr.push(")");
+      backtrack(open, close + 1, arr);
+      arr.pop(); // Backtrack
+    }
+  };
+  backtrack(0, 0, []);
+  return result;
+}
+
+
 // Custom logging function that writes to output.txt and moves to the next line
 function customLog(message) {
     fs.appendFile('output.txt', message + '\n', (err) => {

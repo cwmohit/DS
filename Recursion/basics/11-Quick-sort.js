@@ -39,6 +39,44 @@ function quickSort(nums) {
 }
 
 
+// Better space utilisation (recommended)
+function quickSortInPlace(arr, low = 0, high = arr.length - 1) {
+    if (low < high) {
+        let pivotIndex = partition(arr, low, high);
+        quickSortInPlace(arr, low, pivotIndex - 1);
+        quickSortInPlace(arr, pivotIndex + 1, high);
+    }
+    return arr;
+}
+
+function partition(arr, low, high) {
+    let pivot = arr[high];  // Pick the last element as the pivot
+    let pivotIndex = low; // Start pivotIndex for swapping
+
+    for (let j = low; j < high; j++) {
+        if (arr[j] < pivot) {
+            [arr[pivotIndex], arr[j]] = [arr[j], arr[pivotIndex]]; // Swap
+            pivotIndex++; // Move pivotIndex forward
+        }
+    }
+
+    // Swap pivot with the first element in the right partition
+    [arr[pivotIndex], arr[high]] = [arr[high], arr[pivotIndex]];
+
+    return pivotIndex; // Return pivot's new position
+}
+
+// Example usage:
+let nums = [4, 2, 7, 1, 9, 3];
+console.log(quickSortInPlace(nums));
+
+
+/*
+Time Complexity:
+The time complexity of the quicksort algorithm is O(n log n) on average, assuming that th
+e partition step is done in linear time. In the worst case, the time complexity is O(n^2) when the partition step is done in linear time.
+*/
+
 
 
 
