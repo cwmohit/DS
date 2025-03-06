@@ -46,7 +46,7 @@ var detectCycle = function(head) {
 
 // Approach II
 var detectCycle = function(head) {
-    if (head === null) return null;
+    if (head === null || head.next === null) return null;
 
     let slow = head, fast = head;
 
@@ -57,15 +57,36 @@ var detectCycle = function(head) {
         }
         slow = slow.next;
 
-        if (slow === fast) { // Intersection slow and fast
-            let entry = head;
-            while (entry !== slow) {
-                entry = entry.next;
-                slow = slow.next;
-            }
-            return entry; // Start node of the cycle
+        if (slow === fast) {
+            break;
         }
     }
 
-    return null; // No cycle detected
+    if(slow !== fast) return null;
+
+    // it mean cycle present, lets search entry
+    let entry = head;
+    while (entry !== slow) {
+        entry = entry.next;
+        slow = slow.next;
+    }
+
+    return entry; // Start node of the cycle
 };
+
+/*
+Explain:
+ 
+slow = L1+L2;
+fast = L1+L2+nk;
+
+let's take fast = 2*slow;
+L1+L2+nk = 2*(L1+L2);
+nk = L1+L2;
+L1 = L2-nk; 
+
+L1 distance will cover by entry 
+slow needs to cover L2-nk
+
+Will return their interaction
+*/
