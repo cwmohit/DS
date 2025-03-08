@@ -36,7 +36,8 @@ var find132pattern = function(nums) {
     for(let i=n-1;i>=0;i--){
         if(nums[i] < num3) return true;
 
-        while(!(stack.length === 0) && stack[stack.length - 1] < nums[i]){
+        while(!(stack.length === 0) && stack[stack.length - 1] < nums[i]){ 
+            // because num2 = nums[i], if this is true, it's largest. stack top will 2nd largest
             num3 = stack[stack.length - 1];
             stack.pop();
         }
