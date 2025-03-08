@@ -50,8 +50,13 @@ function minCostToMakeValid(str) {
     return Math.ceil(openCount / 2) + Math.ceil(closeCount / 2);
 }
 
-
-
+/*
+ Step 1: Balance brackets should always even if not return -1;
+ Step 2: Filter out balanced brackets from str and now stack will have only unbalanced brackets
+ Step 3: Three type of combination left: {{{{, }}}}, }}}{{{
+ Step 4: Count the number of open and close brackets in stack
+ Step 5: Return the minimum cost to make valid string
+*/
 
 
 

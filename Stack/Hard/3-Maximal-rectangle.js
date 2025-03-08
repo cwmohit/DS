@@ -96,6 +96,13 @@ var maximalRectangle = function(matrix) {
 };
 
 
+/*
+ Explaination:
+ step1: for each row, calculate heights
+ step2: for each row, calculate largestRectangleArea by using largestRectangleArea
+ step3: return the max area
+*/
+
 
 
 

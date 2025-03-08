@@ -30,12 +30,14 @@ function checkRedundancy(s) {
     let stack = [];
     
     for (let char of s) {
-        if (char === ')') {
+        if(char !== ')') {
+            stack.push(char);
+        }else{
             let top = stack.pop();
             let hasOperator = false;
             
             while (top !== '(') {
-                if (top === '+' || top === '-' || top === '*' || top === '/') {
+                if ('+-*/'.includes(top)) {
                     hasOperator = true;
                 }
                 top = stack.pop();
@@ -44,14 +46,18 @@ function checkRedundancy(s) {
             if (!hasOperator) {
                 return 1;
             }
-        } else {
-            stack.push(char);
         }
     }
     
     return 0; 
 }
 
+/*
+((a+b))
+
+[]
+
+*/
 
 
 

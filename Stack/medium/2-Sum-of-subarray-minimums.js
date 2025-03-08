@@ -27,13 +27,14 @@ var sumSubarrayMins = function(arr) {
     const n = arr.length;
     
     const left = getNSL(arr);
-    const right = getRSL(arr);
+    const right = getNSR(arr);
     
     let result = 0;
     for (let i = 0; i < n; i++) {
         let ls = i - left[i];
         let rs = right[i] - i;
         let totalWays = ls * rs;
+        // arr[i] * totalWays, arr[i] will be minimum in all todayways, will add minimum totalWays times in ans
         result = (result + (arr[i] * totalWays) % MOD) % MOD;
     }
     
@@ -55,7 +56,7 @@ function getNSL(arr) {
     return left;
 }
 
-function getRSL(arr) {
+function getNSR(arr) {
     let stack = [];
     let right = new Array(arr.length);
     
