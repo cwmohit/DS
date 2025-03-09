@@ -39,20 +39,28 @@ Your Task:
 Complete the provided function modifyQueue() that takes queue and K as parameters and returns a modified queue. The printing is done automatically by the driver code.
 */
 
-function reverseKElementsQueue(queue, k) { // using stack
+function reverseKElementsQueue(queue, k) {
+    if (k > queue.size() || k <= 0) return queue; 
+
     let stack = [];
     let count = 0;
 
-    while (queue.size() > 0 && count < k) {
+    // Step 1: Dequeue first k elements and push them onto the stack
+    while (count < k) {
         stack.push(queue.dequeue());
         count++;
     }
 
-    while (queue.size() > 0) {
-        queue.enqueue(stack.pop());
-    }
-
+    // Step 2: Push back the stack elements into the queue
     while (stack.length > 0) {
         queue.enqueue(stack.pop());
     }
+
+    // Step 3: Move the remaining elements to the back to maintain order
+    let t = queue.size() - k;
+    while (t--) {
+        queue.enqueue(queue.dequeue()); 
+    }
+
+    return queue;
 }

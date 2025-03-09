@@ -60,3 +60,5 @@ function FirstNonRepeating(string) { // using queue
 }
 
 customLog(FirstNonRepeating('aabc'))
+// FirstNonRepeating("abcabc"): "aaabc#"
+// FirstNonRepeating("aabbcc"): "a#b#c#"

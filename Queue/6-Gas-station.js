@@ -34,23 +34,33 @@ Constraints:
 1 ≤ gas[i], cost[i] ≤ 103
 */
 
-function startStation(gas, cost) { 
-    let balance = 0, n = gas.length;
+var canCompleteCircuit = function(gas, cost) {
+    let lostGas = 0; // prevTotalGasBeforeStart
+    let currentTank = 0;
     let start = 0;
-    let deficit = 0;
-
-    for(let i=0; i<n; i++){
-        balance += gas[i] - cost[i];
-        if(balance < 0){
-            deficit += balance;
-            balance = 0;
-            start = i+1;
+    
+    for (let i = 0; i < gas.length; i++) {
+        currentTank += gas[i] - cost[i];
+        
+        if (currentTank < 0) {
+            lostGas+=currentTank;
+            start = i + 1;
+            currentTank = 0;
         }
     }
-    if(deficit + balance >= 0){
-        return start;
-    }
-    return -1;
-}
+    
+    return (lostGas+currentTank) >= 0 ? start : -1;
+};
 
-customLog(startStation([1, 2, 3, 4, 5], [3, 4, 5, 1, 2]))
+/*
+(gas station, to reach ith+1 gas station cost (distance of ith+1 gas station))
+(1,2)
+(2,4)
+(3,5)
+(4,1)
+(5,2)
+
+To move gas station from ith to ith+1 will take ith cose
+*/
+
+customLog(canCompleteCircuit([1, 2, 3, 4, 5], [3, 4, 5, 1, 2]))
